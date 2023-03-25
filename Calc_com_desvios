@@ -1,0 +1,121 @@
+while true
+    disp('Digite a opção desejada:');
+    disp('1 - Soma');
+    disp('2 - Subtração');
+    disp('3 - Multiplicação');
+    disp('4 - Divisão');
+    disp('5 - Multiplicação por constante');
+    disp('6 - Exponenciação');
+    disp('7 - Logaritmo');
+    disp('8 - Seno');
+    disp('9 - Cosseno');
+    disp('10 - Raiz quadrada');
+    disp('0 - Sair');
+    Op = input('Opção: ');
+
+    switch Op
+        case 0
+            disp('Saindo do programa...');
+            return;
+
+        case 1
+            a = input('Digite o primeiro número: ');
+            aE = input('Digite o erro do primeiro número: ');
+            b = input('Digite o segundo número: ');
+            bE = input('Digite o erro do segundo número: ');
+            modulo = a + b;
+            erro = aE + bE;
+            clc;
+
+        case 2
+            a = input('Digite o primeiro número: ');
+            aE = input('Digite o erro do primeiro número: ');
+            b = input('Digite o segundo número: ');
+            bE = input('Digite o erro do segundo número: ');
+            modulo = a - b;
+            erro = aE + bE;
+            clc;
+
+        case 3
+            a = input('Digite o primeiro número: ');
+            aE = input('Digite o erro do primeiro número: ');
+            b = input('Digite o segundo número: ');
+            bE = input('Digite o erro do segundo número: ');
+            modulo = a * b;
+            erro = (aE * b) + (bE * a);
+            clc;
+
+        case 4
+            a = input('Digite o primeiro número: ');
+            aE = input('Digite o erro do primeiro número: ');
+            b = input('Digite o segundo número: ');
+            bE = input('Digite o erro do segundo número: ');
+            modulo = a / b;
+            erro = ((aE / b)^2 + (bE * a / b^2)^2)^0.5;
+            clc;
+
+        case 5
+            a = input('Digite o número: ');
+            aE = input('Digite o erro do número: ');
+            c = input('Digite a constante: ');
+            modulo = a * c;
+            erro = aE * c;
+            clc;
+
+        case 6 % potenciação
+            a = input('Digite a base:  ');
+            aE = input('Digite o erro da base:  ');
+            b = input('Digite o expoente:  ');
+            bE = input('Digite o erro do expoente:  ');
+        
+            modulo = a^b;
+            erro = modulo*sqrt((aE/a)^2 + (bE/b)^2);
+         clc;
+
+    case 7 % radiciação
+
+        a = input('Digite o radicando:  ');
+        aE = input('Digite o erro do radicando:  ');
+        b = input('Digite o indice da raiz:  ');
+        
+        modulo = a^(1/b);
+        erro = (1/b) * modulo * (aE/a);
+         clc;
+
+    case 8 % logaritmo
+        a = input('Digite o logaritmando:  ');
+        aE = input('Digite o erro do logaritmando:  ');
+        b = input('Digite a base do logaritmo:  ');
+        
+        modulo = log(a)/log(b);
+        erro = ((aE/a)^2 + (1/log(b))^2)^0.5;
+         clc;
+
+    case 9 % seno
+        a = input('Digite o angulo em graus:  ');
+        aE = input('Digite o erro do angulo em graus:  ');
+        
+        rad = a*pi/180;
+        seno = sin(rad);
+        cosseno = cos(rad);
+        erro = aE*cosseno;
+        modulo = seno;
+         clc;
+
+    case 10 % cosseno
+        a = input('Digite o angulo em graus:  ');
+        aE = input('Digite o erro do angulo em graus:  ');
+        
+        rad = a*pi/180;
+        seno = sin(rad);
+        cosseno = cos(rad);
+        erro = aE*seno;
+        modulo = cosseno;
+        clc;
+
+    otherwise
+        disp('Operacao invalida!');
+    end
+
+    disp(['O resultado e: ' num2str(modulo) ' +/- ' num2str(erro)]);
+end
